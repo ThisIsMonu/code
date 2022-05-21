@@ -9,3 +9,17 @@
     $page++;
     $products = wc_get_products( ["page"=>$page] );
   } while(count($products) > 0)
+
+//code to get a product
+$product = wc_get_product( 387482 );
+
+// update products
+$pIds = "";
+
+$all = explode(",", $pIds);
+
+foreach($all as $id){
+    wp_update_post([
+        'ID' => $id
+    ]);
+}
