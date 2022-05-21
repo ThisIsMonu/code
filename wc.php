@@ -8,7 +8,7 @@
     $all_pdts = array_merge($all_pdts, $products);
     $page++;
     $products = wc_get_products( ["page"=>$page] );
-  } while(count($products) > 0)
+  } while(count($products) > 0);
 
 //code to get a product
 $product = wc_get_product( 387482 );
