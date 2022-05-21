@@ -23,3 +23,21 @@ foreach($all as $id){
         'ID' => $id
     ]);
 }
+
+
+
+
+// get product variants
+$variationIDs = $product->get_children();
+        $variants = [];
+        foreach ($variationIDs as $varID) {
+          $var =  new WC_Product_Variation($varID);
+          array_push($variants, [
+            "id" => $varID,
+            "name" => $var->name,
+            "regular_price" => $var->regular_price,
+            "sale_price" => $var->sale_price,
+            "avail" => $var->is_in_stock() ? 'true' : 'false',
+            "total_sales" => $var->total_sales,
+          ]);
+        }
