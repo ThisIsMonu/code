@@ -1,0 +1,17 @@
+const color_swatches = document.querySelectorAll('.hdl-qv-target-cr .prod__option--img');
+    if(color_swatches){
+      for(const color_swatch of color_swatches){
+        color_swatch.addEventListener('click', (e) => {
+          const imgID = e.target.dataset.imgId;
+          if(imgID){
+            const corrSilde = document.querySelector(`.hdl-qv-target-cr .swiper-slide .sf-image[data-image-id="${imgID}"]`);
+            if(corrSilde){
+              const corrIndex = $(corrSilde).parents('.swiper-slide')[0].dataset.swiperSlideIndex;
+              if(corrIndex){
+                swiper.slideToLoop(parseInt(corrIndex), 1000);
+              }
+            } 
+          }
+        });
+      }
+    }
