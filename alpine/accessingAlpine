@@ -1,0 +1,5 @@
+let alpine_collection = document.querySelector(
+    '.main-content[x-data="collection"]'
+  );
+  
+  window.alpine_collection._x_dataStack[0]
