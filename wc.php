@@ -250,3 +250,22 @@ function op_setAttributes( $data = false, $pdt ) {
 }
 
 // end attribute
+
+
+
+
+// update category
+
+if(count($pdts) > 0){
+            foreach($pdts as $_pdt){
+                $_pdt = wc_get_product($_pdt->ID);
+            	$prevCats = $_pdt->get_category_ids();
+            	if(!in_array($termID, $prevCats)){
+            		array_push($prevCats, $termID);
+            		$_pdt->set_category_ids($prevCats);
+            		$_pdt->save();
+            	}
+            }
+        }
+
+// end udpate category 
