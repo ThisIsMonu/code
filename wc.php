@@ -269,3 +269,48 @@ if(count($pdts) > 0){
         }
 
 // end udpate category 
+
+
+
+
+
+// proceed after sending the response
+
+ignore_user_abort(true);//not required
+set_time_limit(0);
+
+ob_start();
+// do initial processing here
+echo "starting"; // send the response
+header('Connection: close');
+header('Content-Length: '.ob_get_length());
+ob_end_flush();
+@ob_flush();
+flush();
+fastcgi_finish_request();//required for PHP-FPM (PHP > 5.3.3)
+
+// code ...
+
+die();
+
+// end proceed
+
+
+
+
+
+// tag tag
+
+  //first create tag and note its id
+
+$tagIds = $_pdt->get_tag_ids();
+      if(!in_array(504, $tagIds)){
+         array_push($tagIds, 504);
+         $_pdt->set_tag_ids($tagIds);
+         $_pdt->save();
+      }
+
+
+// end add tag
+
+
