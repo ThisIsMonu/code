@@ -315,3 +315,16 @@ $tagIds = $_pdt->get_tag_ids();
 
 
 //tesing
+
+
+
+// get cateogry from cat id
+
+$pdt = wc_get_product(399478);
+$cats = $pdt->get_category_ids();
+$c = array_map(function($id){
+    return get_the_category_by_ID($id);
+}, $cats);
+print_r($c);
+
+// end get cats
