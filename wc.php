@@ -328,3 +328,29 @@ $c = array_map(function($id){
 print_r($c);
 
 // end get cats
+
+
+
+// get products by brand(s)
+
+
+$args = array(
+    'post_type' => 'product',
+    'posts_per_page' => -1,
+    'tax_query'      => array( array(
+      // can be modified to get multiple brands using diffrent compare operator and taxonomy value
+        'taxonomy'        => 'pwb-brand',
+        'field'           => 'slug',
+        'terms'           =>  'mutt-ofcourse'
+    ) )
+);
+$loop = new WP_Query( $args );
+if ( $loop->have_posts() ){
+    echo $loop->found_posts;
+    while ( $loop->have_posts() ) {
+        $loop->the_post();
+      echo the_title();
+    }
+}
+
+// end get products by brand
