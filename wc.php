@@ -354,3 +354,22 @@ if ( $loop->have_posts() ){
 }
 
 // end get products by brand
+
+
+// update products by page
+
+$products = wc_get_products([
+       "page" => 10, 
+       'orderby' => 'title',
+        'order' => 'ASC',
+    ]);
+   plugin_log("Start update");
+   foreach ($products as $i => $p) {
+      wp_update_post([
+         'ID' => $p->get_id()
+      ]);
+      plugin_log("updated($i) -" . $p->get_id());
+   }
+   plugin_log("Done updating products");
+
+// end product update
